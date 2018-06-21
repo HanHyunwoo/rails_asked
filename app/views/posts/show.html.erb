@@ -5,3 +5,6 @@
 <p><%= @post.username %></p>
 <p><%= @post.title %></p>
 <p><%= @post.content %></p>
+
+<a class="btn btn-primary" href="/posts/<%= @post.id %>" data-method="delete" data-confirm="너 진짜 지울래?" role="button">삭제</a>
+<a class="btn btn-primary" href="/posts/<%= @post.id %>/edit" role="button">수정</a>

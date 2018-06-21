@@ -1,28 +1,53 @@
-== README
+### ASKED : rails new asked / rails s -b 0.0.0.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* posts 컨트롤러 `rails g controller posts index new create show edit update destroy` 
 
-Things you may want to cover:
+  * `index` 
 
-* Ruby version
+    * 모든 것을 보여준다.
 
-* System dependencies
+  * Create : `new` `create`
 
-* Configuration
+    * `new`
 
-* Database creation
+      form을 보여준다.
 
-* Database initialization
+    * `create`
 
-* How to run the test suite
+      * form 데이터를 받는다. (params)
+      * Post에 Create 한다.
 
-* Services (job queues, cache servers, search engines, etc.)
+  * Read : `show`
 
-* Deployment instructions
+    * Post 중에 하나를 선택한다.
 
-* ...
+  * Update : `edit` `update`
 
+    * `edit`
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+      form을 보여준다
+
+    * `update`
+
+      * form 데이터를 받는다. (params)
+      * Post 중에 하나를 선택한다.
+      * update한다.
+
+  * Delete : `destroy`
+
+    * Post 중에 하나를 선택한다.
+    * 삭제한다.
+
+* users 컨트롤러 `rails g controller users index new create`
+
+* post 모델 `rails g model post username:string title:string content:text` 
+
+  * string `username`
+  * string `title`
+  * text `content`
+
+* user 모델
+
+  * string `username`
+  * string `email`
+  * string `password`
