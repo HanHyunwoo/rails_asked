@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/login' => 'users#login'
   post '/loginprocess' => 'users#loginprocess'
   get '/logout' => 'users#logout'
-  
+  get '/users/:id/posts' => 'users#posts'
   root 'posts#index'
   # get 'posts' => 'posts#index'
   # get 'posts/new'

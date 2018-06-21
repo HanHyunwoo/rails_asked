@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authorize, except: [:index]
+
   def index
     @posts = Post.all
   end
@@ -9,7 +11,7 @@ class PostsController < ApplicationController
   def create
     # params = {username: "홍길동", title: "제목", content: "내용"}
     # params = {:username => "홍길동", :title => "제목", :content => "내용"}
-    Post.create(username: params[:username],
+    Post.create(user_id: current_user.id,
                 title: params[:title],
                 content: params[:content])
     flash[:notice] = "글 작성이 완료되었습니다."
@@ -32,7 +34,7 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update(username: params[:username],
+    post.update(user_id: current_user.id,
                 title: params[:title],
                 content: params[:content])
     redirect_to "/posts/#{post.id}"
