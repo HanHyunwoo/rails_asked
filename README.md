@@ -80,6 +80,8 @@
     1. URL은 정보의 자원을 표현한다.
     2. 자원에 대한 행위는 HTTP method(verb)로 표현한다.
 
+  
+
   #### form에서 post 요청 보내기
 
   ```erb
@@ -98,6 +100,8 @@
 
   * form post 요청에서 token이 없으면, 오류가 발생함.
     토큰을 사용하는 이유는 CSRF 공격을 방지하기 위해서임.
+
+  
 
   #### put, delete 요청 보내기
 
@@ -174,6 +178,8 @@
     Post.find(1).user.username
     ```
 
+  
+
   #### login
 
   ```ruby
@@ -190,6 +196,8 @@
      session.clear 
   end
   ```
+
+  
 
   #### before filter : 컨트롤러
 
@@ -208,6 +216,8 @@
      end
   end
   ```
+
+  
 
   #### helper method
 
@@ -234,6 +244,4 @@
     	<a href="/signup">회원가입</a>
     <% end %>
     ```
-
-    
 
