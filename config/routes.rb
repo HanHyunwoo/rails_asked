@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+  root 'posts#index'
+
   get 'users/index'
   get '/signup' => 'users#new'
   post 'users' => 'users#create'
-  get '/login' => 'users#login'
-  post '/loginprocess' => 'users#loginprocess'
-  get '/logout' => 'users#logout'
   get '/users/:id/posts' => 'users#posts'
-  root 'posts#index'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  resources :posts
   # get 'posts' => 'posts#index'
   # get 'posts/new'
   # post 'posts' => 'posts#create'
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
   # get 'posts/:id/edit' => 'posts#edit'
   # put 'posts/:id' => 'posts#update'
   # delete 'posts/:id' => 'posts#destroy'
-  resources :posts
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
