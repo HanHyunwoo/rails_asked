@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authorize, except: [:index]
+  before_action :set_post, only: [:show, :edit, :destroy, :updeate]
 
   def index
     @posts = Post.all
@@ -11,9 +12,14 @@ class PostsController < ApplicationController
   def create
     # params = {username: "홍길동", title: "제목", content: "내용"}
     # params = {:username => "홍길동", :title => "제목", :content => "내용"}
-    Post.create(user_id: current_user.id,
-                title: params[:title],
-                content: params[:content])
+
+    # Post.create(user_id: current_user.id,
+    #             title: params[:title],
+    #             content: params[:content])
+    # flash[:notice] = "글 작성이 완료되었습니다."
+
+
+    Post.create(post_params)
     flash[:notice] = "글 작성이 완료되었습니다."
 
     # post = Post.new
@@ -25,23 +31,43 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(user_id: current_user.id,
+    # post = Post.find(params[:id])
+
+
+    @post.update(post_params)
+
+    @post.update({user_id: current_user.id,
                 title: params[:title],
-                content: params[:content])
+                content: params[:content]})
+
     redirect_to "/posts/#{post.id}"
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    @Post.destroy
     redirect_to '/'
   end
+
+
+  private
+
+  def set_post
+    @post - Post.find(params[:id])
+  end
+
+  def post_params
+    params.permit(:title, :content).merge(user_id: current_user.id)
+  end
+
+
+
+
 end
